@@ -1,0 +1,68 @@
+const NAV = {
+  logo: 'NLTechnologY',
+  links: [
+    { label: 'About',   href: '#about' },
+    { label: 'Stack',   href: '#stack' },
+    { label: 'Works',   href: '#works' },
+    { label: 'Contact', href: '#contact' },
+  ],
+};
+
+const HERO = {
+  label: 'Full Stack Developer',
+  tagline: ['Building', 'Digital', 'Reality'],
+  name: 'NERI LENCHNER',
+  subtitle: ['System Architecture', 'UI/UX Refined', 'Clean Code'],
+  image: 'assets/profile.jpg',
+};
+
+const ABOUT = {
+  sectionNumber: '02. The Developer',
+  title: 'About',
+  titleDim: 'Me',
+  bio: [
+    `I'm <span class="highlight">Neri Lenchner</span>, a Full-Stack Developer driven by curiosity, creativity and a passion for building meaningful digital experiences. Code is my craft — I build with precision, ship with confidence, and obsess over the details that make the difference.`,
+    `My stack spans a full spectrum from pixel-perfect frontends to battle-tested backends. I care deeply about <span class="highlight">developer experience</span> and <span class="highlight">user experience</span> in equal measure.`,
+    `When I'm not building, I'm learning. The web never stops evolving — and neither do I.`,
+  ],
+  stats: [
+    { value: '100%', label: 'Accuracy' },
+    { value: '10+',  label: 'Technologies' },
+    { value: '∞',    label: 'Problems Solved' },
+    { value: 'Open', label: 'For Hire' },
+  ],
+};
+
+const TERMINAL = {
+  sectionNumber: '04. System Profile',
+  title: 'The',
+  titleDim: 'Specs',
+  windowTitle: 'neri@portfolio ~ profile.json',
+  left: [
+    { key: 'role',      value: '// Full Stack Dev',  type: 'comment' },
+    { key: 'location',  value: 'Israel / Remote' },
+    { key: 'focus',     value: 'Web & Systems' },
+    { key: 'languages', value: 'Hebrew · English' },
+    { key: 'status',    value: '● Available',        type: 'available' },
+  ],
+  right: [
+    { key: 'frontend', value: 'JavaScript · TypeScript · React' },
+    { key: 'backend',  value: 'Node.js · Express · Python' },
+    { key: 'database', value: 'MongoDB · MySQL' },
+    { key: 'devops',   value: 'Docker · GitHub' },
+    { key: 'api',      value: 'REST API' },
+  ],
+};
+
+const FOOTER = {
+  eyebrow: 'Ready to build something great?',
+  heading: "Let's",
+  headingHighlight: 'Build',
+  email: 'n.l.a.y.lench@gmail.com',
+  social: [
+    { label: 'GitHub',   href: 'https://github.com/Neri-Lenchner' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/neri-lenchner-800797283/' },
+    { label: 'Twitter',  href: 'https://x.com/THE_LENCH' },
+  ],
+  copyright: '© 2026 NERI LENCHNER. FULL STACK DEVELOPER',
+};
