@@ -336,7 +336,7 @@ hr.section-divider {
 }
 
 .hero-tagline .outline {
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  -webkit-text-stroke: 1px rgba(96, 165, 250, 0.65);
   color: transparent;
 }
 
@@ -477,7 +477,7 @@ hr.section-divider {
 }
 
 .section-title .dim {
-  color: #2a2a2a;
+  color: rgba(96, 165, 250, 0.65);
 }
 
 .about-grid {
@@ -588,7 +588,7 @@ hr.section-divider {
 }
 
 .stack .section-title .dim {
-  color: #2a2a2a;
+  color: rgba(96, 165, 250, 0.65);
 }
 
 .stack-grid {
@@ -616,7 +616,7 @@ hr.section-divider {
 .stack-num {
   font-family: 'Space Mono', monospace;
   font-size: 0.65rem;
-  color: #2a2a2a;
+  color: rgba(96, 165, 250, 0.65);
   letter-spacing: 0.1em;
 }
 
@@ -678,7 +678,7 @@ hr.section-divider {
 }
 
 .works .section-title .dim {
-  color: #2a2a2a;
+  color: rgba(96, 165, 250, 0.65);
 }
 
 .works-grid {
@@ -827,7 +827,7 @@ hr.section-divider {
 }
 
 .terminal-section .section-title .dim {
-  color: #2a2a2a;
+  color: rgba(96, 165, 250, 0.65);
 }
 
 .terminal {
@@ -964,7 +964,7 @@ hr.section-divider {
 
 .footer-copy {
   font-size: 0.72rem;
-  color: #2a2a2a;
+  color: rgba(96, 165, 250, 0.65);
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-top: 2rem;

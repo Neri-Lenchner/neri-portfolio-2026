@@ -27,7 +27,7 @@ const ABOUT = {
   ],
   stats: [
     { value: '100%', label: 'Accuracy' },
-    { value: '10+',  label: 'Technologies' },
+    { value: 'End-to-End',  label: 'Development' },
     { value: '∞',    label: 'Problems Solved' },
     { value: 'Open', label: 'For Hire' },
   ],
@@ -58,7 +58,7 @@ const FOOTER = {
   eyebrow: 'Ready to build something great?',
   heading: "Let's",
   headingHighlight: 'Build',
-  email: 'n.l.a.y.lench@gmail.com',
+  email: 'n.l.y.a.lench@gmail.com',
   social: [
     { label: 'GitHub',   href: 'https://github.com/Neri-Lenchner' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/neri-lenchner-800797283/' },
