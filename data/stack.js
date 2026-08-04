@@ -18,5 +18,6 @@ const STACK = {
     { name: 'REST API',    role: 'Stateless API architecture' },
     { name: 'JWT',         role: 'Secure token-based authentication' },
     { name: 'OOP',         role: 'Scalable, maintainable code design' },
+    { name: 'Multer',      role: 'File upload handling for Node.js' },
   ],
 };
