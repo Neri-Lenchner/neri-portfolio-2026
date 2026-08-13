@@ -114,7 +114,8 @@ function createWorks() {
           <div class="project-tags">
             ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
           </div>
-          <a href="${p.link}" class="project-link" target="_blank" rel="noreferrer">View Project →</a>
+          <a href="${p.link}" class="project-link" target="_blank" rel="noreferrer">GitHub →</a>
+          ${p.liveLink ? `<a href="${p.liveLink}" class="project-link" target="_blank" rel="noreferrer">Live Demo →</a>` : ''}
         </div>
       `).join('')}
     </div>
