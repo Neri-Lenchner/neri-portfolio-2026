@@ -9,7 +9,7 @@ const PROJECTS = {
       desc: 'An AI-powered guitar discovery platform. Browse 25 brands via a 3D carousel, explore models with live Reverb marketplace listings, save favorites to a watchlist, find nearby music stores on a map, and chat with an AI assistant.',
       tags: ['React', 'Node.js', 'Express', 'MongoDB', 'TypeScript', 'OpenAI API', 'Redux Toolkit'],
       link: 'https://github.com/Neri-Lenchner/guitar-finder-ver-1',
-      liveLink: 'https://lucid-wholeness-production-0cba.up.railway.app/home',
+      liveLink: 'https://giutarfinder.up.railway.app/home',
       featured: false,
     },
     {
