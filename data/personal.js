@@ -64,7 +64,7 @@ const FOOTER = {
   social: [
     { label: 'GitHub',   href: 'https://github.com/Neri-Lenchner' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/neri-lenchner-800797283/' },
-    { label: 'Twitter',  href: 'https://x.com/THE_LENCH' },
+    // { label: 'Twitter',  href: 'https://x.com/THE_LENCH' },
   ],
   copyright: '© 2026 NERI LENCHNER. FULL STACK DEVELOPER',
 };
