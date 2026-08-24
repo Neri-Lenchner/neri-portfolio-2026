@@ -32,8 +32,8 @@ function createHero() {
           ${HERO.subtitle.map(s => `<span>${s}</span>`).join('<span class="dot">•</span>')}
         </div>
         <div class="hero-cta">
-          <a href="#works"><button class="btn-primary">View My Work</button></a>
-          <a href="#contact"><button class="btn-outline">Get In Touch</button></a>
+          <a href="#works" class="btn-primary">View My Work</a>
+          <a href="#contact" class="btn-outline">Get In Touch</a>
         </div>
       </div>
       <div class="hero-image-wrap">

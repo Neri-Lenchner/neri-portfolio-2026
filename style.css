@@ -369,6 +369,7 @@ hr.section-divider {
 }
 
 .btn-primary, .btn-outline {
+  display: inline-block;
   border-radius: 4px;
 }
 
