@@ -3,7 +3,7 @@ const STACK = {
   title: 'The',
   titleDim: 'Arsenal',
   items: [
-    { name: 'AI-Augmented Development', role: 'Claude Code · GitHub Copilot · OpenAI Codex · Google Gemini' },
+    { name: 'AI-Development', role: 'Claude Code · GitHub Copilot · OpenAI Codex · Google Gemini' },
     { name: 'React',       role: 'Component-based UI development' },
     { name: 'TypeScript',  role: 'Type-safe JavaScript at scale' },
     { name: 'JavaScript',  role: 'Core language of the web' },
