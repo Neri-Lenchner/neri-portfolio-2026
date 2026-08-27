@@ -69,13 +69,21 @@ function createHero() {
         </div>
       </div>
       <div class="hero-image-wrap">
-        <img src="${HERO.image}" alt="" class="hero-image-bg" aria-hidden="true" />
-        <div class="hero-image-frame">
-          <img src="${HERO.image}" alt="${HERO.name}" class="hero-image" />
-          <div class="hero-image-grain"></div>
-          <div class="hero-image-scanlines"></div>
-          <div class="hero-image-overlay"></div>
-        </div>
+        <img 
+            src="${HERO.image}" 
+            alt="" class="hero-image-bg" 
+            aria-hidden="true" 
+        />
+      <div class="hero-image-frame">
+        <img 
+          src="${HERO.image}" 
+          alt="${HERO.name}" 
+          class="hero-image" 
+        />
+        <div class="hero-image-grain"></div>
+        <div class="hero-image-scanlines"></div>
+        <div class="hero-image-overlay"></div>
+      </div>
       </div>
     </div>
     <div class="hero-scroll">
@@ -154,19 +162,42 @@ function createWorks() {
   section.id = 'works';
   section.className = 'works';
   section.innerHTML = `
-    <div class="section-number">${PROJECTS.sectionNumber}</div>
-    <h2 class="section-title">${PROJECTS.title}<br /><span class="dim">${PROJECTS.titleDim}</span></h2>
+    <div class="section-number">
+      ${PROJECTS.sectionNumber}
+    </div>
+    <h2 class="section-title">
+      ${PROJECTS.title}<br />
+        <span class="dim">
+          ${PROJECTS.titleDim}
+        </span>
+    </h2>
     <div class="works-grid">
       ${PROJECTS.items.map(p => `
         <div class="project-card${p.featured ? ' featured' : ''}">
-          <div class="project-num">${p.num}</div>
-          <div class="project-title">${p.title}</div>
-          <div class="project-desc">${p.desc}</div>
+          <div class="project-num">
+            ${p.num}
+          </div>
+          <div class="project-title">
+            ${p.title}
+          </div>
+          <div class="project-desc">
+            ${p.desc}
+          </div>
           <div class="project-tags">
             ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
           </div>
-          <a href="${p.link}" class="project-link" target="_blank" rel="noreferrer">View Project ▶</a>
-          ${p.liveLink ? `<a href="${p.liveLink}" class="project-link" target="_blank" rel="noreferrer">Live Demo ▶</a>` : ''}
+          <a href="${p.link}" class="project-link" target="_blank" rel="noreferrer">
+            View Project ▶
+          </a>
+          ${p.liveLink 
+      ? `<a 
+          href="${p.liveLink}" 
+          class="project-link" 
+          target="_blank" 
+          rel="noreferrer">
+              Live Demo ▶
+         </a>` 
+      : ''}
         </div>
       `).join('')}
     </div>
@@ -176,10 +207,23 @@ function createWorks() {
 
 function terminalLine(item) {
   if (item.type === 'comment') {
-    return `<div class="terminal-line"><span class="key">${item.key}</span>          ${esc(item.value)}</div>`;
+    return `<div class="terminal-line">
+              <span class="key">
+                ${item.key}
+              </span>          
+              ${esc(item.value)}
+            </div>`;
   }
   const cls = item.type === 'available' ? 'available' : 'val';
-  return `<div class="terminal-line"><span class="key">${item.key}</span>    <span class="${cls}">  ${esc(item.value)}</span></div>`;
+  return `<div class="terminal-line">
+            <span class="key">
+              ${item.key}
+            </span>    
+            <span class="${cls}">  
+              ${esc(item.value)}
+            </span>
+          </div>
+        `;
 }
 
 function createTerminal() {
@@ -187,7 +231,11 @@ function createTerminal() {
   section.className = 'terminal-section';
   section.innerHTML = `
     <div class="section-number">${TERMINAL.sectionNumber}</div>
-    <h2 class="section-title">${TERMINAL.title}<br /><span class="dim">${TERMINAL.titleDim}</span></h2>
+    <h2 class="section-title">${TERMINAL.title}<br />
+      <span class="dim">
+        ${TERMINAL.titleDim}
+      </span>
+    </h2>
     <div class="terminal">
       <div class="terminal-bar">
         <div class="terminal-dot"></div>
