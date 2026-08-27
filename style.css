@@ -511,6 +511,11 @@ hr.section-divider {
   align-items: start;
 }
 
+.about-bio,
+.about-stats {
+  min-width: 0;
+}
+
 .about-bio {
   font-size: 1.05rem;
   line-height: 1.8;
@@ -562,6 +567,7 @@ hr.section-divider {
 
 @media (max-width: 768px) {
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-stats { grid-template-columns: 1fr; }
 }
 
 /* ── Stack ── */
