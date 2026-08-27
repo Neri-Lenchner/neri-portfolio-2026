@@ -21,9 +21,25 @@ const ABOUT = {
   title: 'About',
   titleDim: 'Me',
   bio: [
-    `I'm <span class="highlight">Neri Lenchner</span>, a Full-Stack Developer driven by curiosity, creativity and a passion for building meaningful digital experiences. I build with precision and obsess over the details that make the difference.`,
-    `I care deeply about <span class="highlight">developer experience</span> and <span class="highlight">user experience</span> in equal measure.`,
-    `I operate at the frontier of <span class="highlight">AI-augmented engineering</span> - commanding tools like Claude Code, GitHub Copilot, OpenAI Codex, and Google Gemini. Not just using them, but mastering them: accelerating architecture decisions, eliminating bottlenecks, and multiplying output that would take a team. This is the new standard of elite development, and I'm already there.`,
+    `I'm 
+<span class="highlight">
+    Neri Lenchner
+</span>
+, a Full-Stack Developer driven by curiosity, creativity and a passion for building meaningful digital experiences. I build with precision and obsess over the details that make the difference.`,
+    `I care deeply about 
+<span class="highlight">
+    developer experience
+</span>
+    and 
+ <span class="highlight">
+    user experience
+  </span> 
+  in equal measure. 
+    I operate at the frontier of 
+  <span class="highlight">
+    AI-engineering
+  </span>
+   - commanding tools like Claude Code, GitHub Copilot, OpenAI Codex, and Google Gemini. Not just using them, but mastering them: accelerating architecture decisions, eliminating bottlenecks, and multiplying output that would take a team. This is the new standard of elite development, and I'm already there.`,
     `When I'm not building, I'm learning. The web never stops evolving - and neither do I.`,
 
   ],
