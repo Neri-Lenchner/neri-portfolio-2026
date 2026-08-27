@@ -8,9 +8,20 @@ function createNavbar() {
   const nav = document.createElement('nav');
   nav.className = 'navbar';
   nav.innerHTML = `
-    <div class="nav-logo">${NAV.logo}<span>.</span></div>
+    <div class="nav-logo">
+      ${NAV.logo}
+        <span>
+          .
+        </span>
+    </div>
     <ul class="nav-links">
-      ${NAV.links.map(l => `<li><a href="${l.href}">${l.label}</a></li>`).join('')}
+      ${NAV.links.map(l => `
+        <li>
+          <a href="${l.href}">
+            ${l.label}
+          </a>
+        </li>`
+  ).join('')}
     </ul>
   `;
   return nav;
@@ -224,7 +235,9 @@ function createFooter() {
           </a>
         `).join('')}
       </div>
-      <div class="footer-copy">${FOOTER.copyright}</div>
+      <div class="footer-copy">
+        ${FOOTER.copyright}
+      </div>
     </div>
   `;
   return footer;
