@@ -18,6 +18,7 @@ const PROJECTS = {
       desc: 'A full-stack vacation management platform with role-based access control, JWT authentication, and vacation tracking with charts. Dockerized for easy deployment.',
       tags: ['React', 'Node.js', 'Express', 'MySQL', 'TypeScript', 'Docker'],
       link: 'https://github.com/Neri-Lenchner/Vacations-final-version-John-bryce-3ed-project',
+      liveLink: 'https://vacation-app-lyart.vercel.app',
       featured: false,
     },
     {
