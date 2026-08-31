@@ -7,7 +7,7 @@ const PROJECTS = {
       num: '01',
       title: 'Guitar Finder',
       // desc: 'A guitar discovery platform built around one idea: finding the right guitar should be effortless. GuitarFinder makes searching intuitive — with just a few clicks, you can go from a brand to the exact model you’re looking for, explore live Reverb listings, compare real prices, and save guitars to your personal watchlist. Need help along the way? GuitarGod, the built-in AI guitar expert, is always there to guide you. Explore 40 iconic guitar brands, discover music stores around the world, and experience a guitar search designed to get you exactly where you want to go — quickly and intuitively. Featuring JWT authentication, live market analytics, interactive charts, and Dockerized deployment.'
-      desc:'GuitarFinder makes finding the right guitar effortless — explore 40 iconic brands, discover exact models, compare live market prices, save favorites, and get expert guidance from GuitarGod, the built-in AI guitar assistant.',
+      desc:'A full-stack guitar discovery platform designed to make finding the right guitar effortless, with intuitive browsing, live Reverb listings, price comparison, personalized watchlists, and an AI-powered guitar expert. Featuring JWT authentication, live market analytics, interactive charts, and Dockerized deployment.\n',
       tags: ['React', 'Node.js', 'Express', 'MongoDB', 'TypeScript', 'OpenAI API', 'Redux Toolkit', 'Docker', 'JWT'],
       link: 'https://github.com/Neri-Lenchner/guitar-finder-ver-1',
       liveLink: 'https://giutarfinder.up.railway.app/home',
