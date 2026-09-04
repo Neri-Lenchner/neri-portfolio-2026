@@ -33,15 +33,6 @@ const PROJECTS = {
     },
     {
       num: '04',
-      title: 'Boidem',
-      desc: 'A used-clothing donation tracker built for a kibbutz community: passwordless family logins (account number + first name), admin dashboards with cross-account totals and anomaly flagging, date-range reports exportable to PDF, and full JSON backups. Hebrew/RTL throughout, built entirely on Firebase Auth and Firestore with no custom backend.',
-      tags: ['React', 'TypeScript', 'Vite', 'Firebase', 'Firestore', 'Redux Toolkit'],
-      link: 'https://github.com/Neri-Lenchner/boidem',
-      liveLink: 'https://boidem.vercel.app',
-      featured: false,
-    },
-    {
-      num: '05',
       title: 'Chat Project',
       desc: 'A chat app with passwordless phone-number login, conversation threads with read receipts, and live presence and typing indicators over a JWT-authenticated WebSocket connection. Start new conversations from a contacts list.',
       tags: ['React', 'TypeScript', 'FastAPI', 'Python', 'SQLModel', 'MySQL', 'WebSockets', 'JWT'],
