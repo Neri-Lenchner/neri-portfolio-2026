@@ -13,7 +13,7 @@ const HERO = {
   tagline: ['Building', 'Digital', 'Reality'],
   name: 'NERI LENCHNER',
   subtitle: ['System Architecture', 'UI/UX Refined', 'Clean Code'],
-  image: 'assets/my_own_image.png',
+  image: 'assets/my_own_image.webp',
 };
 
 const ABOUT = {
