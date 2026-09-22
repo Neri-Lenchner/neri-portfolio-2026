@@ -186,10 +186,12 @@ function createWorks() {
           <div class="project-tags">
             ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
           </div>
-          <a href="${p.link}" class="project-link" target="_blank" rel="noreferrer">
+          ${p.link
+      ? `<a href="${p.link}" class="project-link" target="_blank" rel="noreferrer">
             View Project ▶
-          </a>
-          ${p.liveLink 
+          </a>`
+      : ''}
+          ${p.liveLink
       ? `<a 
           href="${p.liveLink}" 
           class="project-link" 

@@ -39,5 +39,13 @@ const PROJECTS = {
       link: 'https://github.com/Neri-Lenchner/chat-project',
       featured: false,
     },
+    {
+      num: '05',
+      title: "Berta's Tarot Cards Spreads",
+      desc: 'An AI-powered tarot reading app with multiple spread types — a 10-card Celtic Cross, a 3-card spread, and a custom Master Spread — plus a full 78-card deck browser. Readings are generated as one flowing narrative per spread, fully bilingual with RTL Hebrew support, with saved reading history, daily usage caps, and rate-limited auth.',
+      tags: ['React', 'TypeScript', 'Node.js', 'Express', 'MySQL', 'OpenAI API', 'Redux Toolkit', 'Docker', 'JWT'],
+      liveLink: 'https://bertas-tarot-app.up.railway.app',
+      featured: false,
+    },
   ],
 };
