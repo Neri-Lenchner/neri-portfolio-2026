@@ -1,0 +1,757 @@
+# Option C: Bold Studio
+
+A CSS-only redesign for [neri-portfolio-2026](https://github.com/Neri-Lenchner/neri-portfolio-2026).
+
+- **No text changes and no order changes.** `index.html`, `main.js` and `data/*.js` stay exactly as they are.
+- **The same fonts you already load:** Space Grotesk and Space Mono.
+- **The idea:** pure black, white and one strong yellow. Big uppercase headlines, sharp edges, thin 1px grid lines and monospace labels. It's the confidence of a design studio or a record-label sleeve, which suits your background.
+
+---
+
+## How to apply it
+
+1. Open `style.css` and replace its whole content with the CSS at the bottom of this file. Keep a copy of the old one, e.g. `style-old.css`, so you can switch back.
+2. Refresh the page. That's it.
+
+There's one optional cleanup, and it's the only non-CSS change. Manrope is no longer used, so you can remove `family=Manrope:wght@300;400;500;600;700;800&` from the Google Fonts `<link>` in `index.html`. The page then loads a little faster.
+
+---
+
+## What changes, section by section
+
+| Area | Now | Option C |
+|---|---|---|
+| Colors | Gold `#eab308`, dark greys, grey text at 2.6:1 contrast | Black `#000`, white, yellow `#facc15`; secondary text `#a3a3a3` (8.6:1, easy to read) |
+| Background | Blurred glow blobs | Clean black (glows hidden) |
+| Navbar | Grey links, hidden on phones | Mono uppercase links, yellow on hover, **visible on phones** |
+| Hero label | Gold text with a line | Yellow tag with black text |
+| Headline | "Digital" in a faint outline | All caps, "Digital" in solid yellow |
+| Buttons | Rounded, white text on gold (low contrast) | Square, joined side by side: yellow + white outline |
+| Photo | Grain, scanlines, tint, gold brackets | Sharp, clean frame with a thin border |
+| Section headings | Two lines, gold second word | One line, uppercase, yellow second word; section number as a yellow tag |
+| About stats | Separate cards | One grid with 1px lines; turns yellow on hover |
+| Stack grid | 3 columns with an empty grey cell | Same grid with 1px lines; last item fills the row; cards turn yellow on hover |
+| Project cards | Text column, two stacked gold links | Content on the left, link column on the right; **Live Demo** is the yellow block. The lone 5th card spans the full width |
+| Specs terminal | macOS red/yellow/green dots | **Same layout as now** (colored dots, two columns); yellow keys, brighter values, black panel |
+| Footer | "Let's Build" with gold word | **Same layout as now** (centered, "Let's Build", plain text links, copyright line); new yellow, readable grey email, mono labels |
+| Accessibility | No focus styles, motion always on | Yellow keyboard focus outline; animations switch off for people who turn off motion in their system settings |
+
+---
+
+## The CSS
+
+Replace `style.css` with this:
+
+```css
+/* ==========================================================================
+   Neri Lenchner — Option C: Bold Studio
+   Pure-CSS theme. Same HTML, same text, same order.
+   ========================================================================== */
+
+/* ── Tokens ── */
+:root {
+  --black: #000000;
+  --panel: #0a0a0a;
+  --line: #2a2a2a;
+  --line-strong: #444444;
+  --white: #ffffff;
+  --text: #d4d4d4;
+  --muted: #a3a3a3;
+  --yellow: #facc15;
+  --yellow-hover: #fde047;
+  --green: #22c55e;
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
+
+  --container: 1120px;
+  --section-pad: clamp(5rem, 10vw, 8rem);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; overflow-x: hidden; }
+
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--yellow); color: var(--black); }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--yellow); }
+
+a { text-decoration: none; color: inherit; }
+
+a:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 3px;
+}
+
+hr.section-divider {
+  border: none;
+  border-top: 1px solid var(--line);
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+/* background blobs off */
+.glow-1, .glow-2 { display: none; }
+
+/* ── Motion ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── Navbar ── */
+.navbar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  height: 64px;
+  padding: 0 max(1.5rem, calc((100vw - var(--container)) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  display: flex;
+  align-items: baseline;
+}
+
+.nav-logo span { color: var(--yellow); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--white);
+  padding: 0.35rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.nav-links a:hover { color: var(--yellow); border-color: var(--yellow); }
+
+@media (max-width: 768px) {
+  .navbar { height: 56px; padding: 0 1rem; }
+  .nav-logo { font-size: 0.85rem; }
+  .nav-links { display: flex; gap: 0.9rem; }
+  .nav-links a { font-size: 0.66rem; letter-spacing: 0.02em; }
+}
+
+/* ── Shared section scaffolding ── */
+.about, .stack, .works, .terminal-section {
+  padding: var(--section-pad) 1.5rem;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.section-number {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--black);
+  background: var(--yellow);
+  padding: 0.2rem 0.55rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* "ABOUT ME", "THE ARSENAL" … on one line */
+.section-title br { display: none; }
+.section-title .dim { color: var(--yellow); }
+
+.about .section-number, .about .section-title, .about-bio, .stat-card,
+.stack .section-number, .stack .section-title, .stack-card,
+.works .section-number, .works .section-title, .project-card,
+.terminal-section .section-number, .terminal-section .section-title, .terminal,
+.footer-eyebrow, .footer-heading, .footer-email, .social-links, .footer-copy {
+  animation: fadeUp 0.7s var(--ease) both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+/* ── Hero ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 8rem 1.5rem 5rem;
+  max-width: var(--container);
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  align-items: start;
+  gap: clamp(3rem, 6vw, 6rem);
+}
+
+.hero-content > * { animation: fadeUp 0.7s var(--ease) both; }
+.hero-label   { animation-delay: 0.05s !important; }
+.hero-tagline { animation-delay: 0.12s !important; }
+.hero-name    { animation-delay: 0.22s !important; }
+.hero-sub     { animation-delay: 0.3s !important; }
+.hero-cta     { animation-delay: 0.38s !important; }
+
+.hero-label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--black);
+  background: var(--yellow);
+  padding: 0.25rem 0.6rem;
+  margin-bottom: 1.75rem;
+}
+
+.hero-tagline {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  font-weight: 700;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.hero-tagline span { display: block; }
+
+.hero-tagline .outline {
+  color: var(--yellow);
+  -webkit-text-stroke: 0;
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--white);
+  margin: 1.75rem 0 0.6rem;
+}
+
+.hero-sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero-sub .dot { color: var(--yellow); }
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 2.5rem;
+}
+
+.btn-primary, .btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 1.6rem;
+  border-radius: 0;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-primary {
+  background: var(--yellow);
+  color: var(--black);
+  border: 1px solid var(--yellow);
+}
+
+.btn-primary:hover { background: var(--yellow-hover); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--white);
+}
+
+.btn-outline:hover { background: var(--white); color: var(--black); }
+
+/* Portrait: sharp frame, no effects */
+.hero-image-wrap {
+  position: relative;
+  width: 340px;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  animation: fadeIn 0.9s var(--ease) 0.2s both;
+}
+
+.hero-image-wrap::before,
+.hero-image-wrap::after,
+.hero-image-frame::before,
+.hero-image-bg,
+.hero-image-grain,
+.hero-image-scanlines,
+.hero-image-overlay { display: none; }
+
+.hero-image-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.6s var(--ease);
+}
+
+.hero-image-wrap:hover .hero-image { transform: scale(1.03); }
+
+.hero-scroll { display: none; }
+
+@media (max-width: 860px) {
+  .hero { padding: 6.5rem 1.25rem 4rem; min-height: auto; }
+  .hero-inner { display: flex; flex-direction: column-reverse; align-items: flex-start; gap: 2rem; }
+  .hero-image-wrap { width: 140px; aspect-ratio: 1; }
+}
+
+/* ── About ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: clamp(3rem, 6vw, 5rem);
+  align-items: start;
+}
+
+.about-bio, .about-stats { min-width: 0; }
+
+.about-bio {
+  font-size: 1.075rem;
+  line-height: 1.8;
+  color: var(--text);
+  max-width: 62ch;
+}
+
+.about-bio p + p { margin-top: 1.25rem; }
+
+.about-bio .highlight {
+  color: var(--yellow);
+  font-weight: 700;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+.stat-card {
+  padding: 1.75rem 1.5rem;
+  background: var(--black);
+  transition: background 0.2s, color 0.2s;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stat-card:hover { background: var(--yellow); }
+.stat-card:hover .stat-value,
+.stat-card:hover .stat-label { color: var(--black); }
+
+@media (max-width: 860px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-bio { font-size: 1rem; }
+}
+
+@media (max-width: 420px) {
+  .stat-card { padding: 1.25rem 1rem; }
+  .stat-value { font-size: 1.05rem; }
+}
+
+/* ── Stack ── */
+.stack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+
+/* last item (AI-Development) fills the row: no empty cell */
+.stack-card:last-child { grid-column: span 2; }
+
+.stack-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.5rem;
+  background: var(--black);
+  transition: background 0.2s;
+}
+
+.stack-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--yellow);
+}
+
+.stack-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--white);
+}
+
+.stack-role {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.stack-card:hover { background: var(--yellow); }
+.stack-card:hover .stack-num,
+.stack-card:hover .stack-name,
+.stack-card:hover .stack-role { color: var(--black); }
+
+@media (max-width: 760px) {
+  .stack-grid { grid-template-columns: repeat(2, 1fr); }
+  .stack-card { padding: 1.1rem; }
+  .stack-name { font-size: 0.95rem; }
+}
+
+/* ── Works ── */
+.works-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.works-grid .featured,
+.project-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+/* content on the left, link column on the right */
+.project-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto 1fr auto;
+  background: var(--black);
+  border: 1px solid var(--line-strong);
+  transition: border-color 0.2s;
+}
+
+.project-card:hover { border-color: var(--yellow); }
+
+.project-card > :not(.project-link) {
+  grid-column: 1;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+
+.project-num {
+  padding-top: 1.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--yellow);
+}
+
+.project-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--white);
+  margin: 0.5rem 0 0.75rem;
+}
+
+.project-desc {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.9rem;
+  padding-bottom: 1.75rem;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tag::before { content: '/ '; color: var(--yellow); }
+
+.project-link {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-left: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+
+.project-link:hover { background: var(--white); color: var(--black); }
+
+/* "Live Demo" (second link) = the yellow primary action */
+.project-link + .project-link {
+  grid-row: 3 / 5;
+  border-top: 1px solid var(--line-strong);
+  background: var(--yellow);
+  color: var(--black);
+}
+
+.project-link + .project-link:hover { background: var(--yellow-hover); }
+
+/* a card with only one link: it fills the whole column */
+.project-link:only-of-type { grid-row: 1 / -1; }
+
+@media (max-width: 760px) {
+  .works-grid { grid-template-columns: 1fr; }
+  .project-card { grid-template-columns: 1fr 1fr; }
+  .project-card > :not(.project-link) { grid-column: 1 / -1; padding-left: 1.25rem; padding-right: 1.25rem; }
+  .project-num { padding-top: 1.25rem; }
+  .project-title { font-size: 1.3rem; }
+  .project-link,
+  .project-link + .project-link {
+    grid-column: auto;
+    grid-row: auto;
+    border-left: 0;
+    border-top: 1px solid var(--line-strong);
+    justify-content: center;
+    padding: 0.95rem 1rem;
+  }
+  .project-link + .project-link { border-left: 1px solid var(--line-strong); }
+  .project-link:only-of-type { grid-column: 1 / -1; }
+}
+
+/* ── Terminal ("The Specs") — original layout, Option C colors ── */
+.terminal {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  font-family: var(--font-mono);
+  overflow: hidden;
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: #141414;
+  border-bottom: 1px solid var(--line);
+}
+
+.terminal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.terminal-dot:nth-child(1) { background: #ff5f57; }
+.terminal-dot:nth-child(2) { background: #febc2e; }
+.terminal-dot:nth-child(3) { background: #28c840; }
+
+.terminal-title {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-left: 0.5rem;
+}
+
+.terminal-body {
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.terminal-line {
+  font-size: 0.85rem;
+  line-height: 2;
+  color: var(--muted);
+}
+
+.terminal-line .key  { color: var(--yellow); }
+.terminal-line .val  { color: #e5e5e5; }
+.terminal-line .available { color: #28c840; }
+
+@media (max-width: 760px) {
+  .terminal-body { grid-template-columns: 1fr; gap: 0; padding: 1.25rem; }
+  .terminal-line { font-size: 0.8rem; }
+}
+
+/* ── Footer — original layout, Option C colors ── */
+.footer-wrapper { border-top: 1px solid var(--line); }
+
+.footer-section {
+  padding: 6rem 1.5rem 0;
+  max-width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+}
+
+.footer-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.footer-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.75rem, 8vw, 5.5rem);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.footer-heading span { color: var(--yellow); }
+
+.footer-email {
+  font-size: 1.05rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+
+.footer-email:hover { color: var(--yellow); }
+
+.social-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.social-link {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  transition: color 0.2s;
+}
+
+.social-link:hover { color: var(--yellow); }
+
+.footer-copy {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 2rem 0;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--yellow);
+}
+
+/* ── Respect reduced-motion settings ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+```
+
+---
+
+## Notes
+
+- **Uppercase is display-only.** `text-transform: uppercase` changes how headings look, not the text in your data files. Copy-paste and screen readers still get your original text.
+- **Yellow `#facc15`** is a bit brighter and cleaner than your current gold `#eab308`. To keep your exact gold, change `--yellow` and `--yellow-hover` at the top. Everything else follows.
+- **Phone layout:** the nav links stay visible, and the photo becomes a 140px square above the headline (same order as now, just smaller). Project links turn into a two-button row under each card.
+- **Firefox:** scroll-reveal animations use `animation-timeline: view()`, which Firefox doesn't support yet. There they play once on load. Nothing breaks.
