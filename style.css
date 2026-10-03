@@ -726,9 +726,8 @@ body.nav-open .mobile-menu {
 .stack-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: #1e1e1e;
-  border: 1px solid #1e1e1e;
+  border-top: 1px solid #1e1e1e;
+  border-left: 1px solid #1e1e1e;
 }
 
 .stack-card {
@@ -737,6 +736,8 @@ body.nav-open .mobile-menu {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  border-right: 1px solid #1e1e1e;
+  border-bottom: 1px solid #1e1e1e;
   transition: background 0.2s;
   cursor: default;
 }

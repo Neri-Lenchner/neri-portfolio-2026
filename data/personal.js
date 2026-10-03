@@ -61,7 +61,7 @@ const TERMINAL = {
     { key: 'location',  value: 'Israel / Remote' },
     { key: 'focus',     value: 'Web & Systems' },
     { key: 'languages', value: 'Hebrew · English' },
-    { key: 'status',    value: '● Available',        type: 'available' },
+    { key: 'status',    value: '● Available for Freelance', type: 'available' },
   ],
   right: [
     { key: 'frontend', value: 'JavaScript · TypeScript · React' },
