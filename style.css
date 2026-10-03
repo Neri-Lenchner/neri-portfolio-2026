@@ -30,6 +30,22 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #eab308;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 hr.section-divider {
   border: none;
   border-top: 1px solid #1e1e1e;
@@ -145,7 +161,7 @@ hr.section-divider {
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #555555;
+  color: #8a8a8a;
   transition: color 0.2s;
 }
 
@@ -153,8 +169,91 @@ hr.section-divider {
   color: #ffffff;
 }
 
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  padding: 0.5rem;
+  margin: -0.5rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 101;
+}
+
+.nav-toggle .bar {
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: center;
+}
+
+body.nav-open .nav-toggle .bar-1 { transform: translateY(6px) rotate(45deg); }
+body.nav-open .nav-toggle .bar-2 { opacity: 0; }
+body.nav-open .nav-toggle .bar-3 { transform: translateY(-6px) rotate(-45deg); }
+
 @media (max-width: 768px) {
-  .nav-links { display: none; }
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-links {
+    display: none;
+  }
+}
+
+/* ── Mobile menu overlay ──
+   Rendered as a sibling of .navbar (not a descendant) so it is not
+   clipped by .navbar's own backdrop-filter, which establishes a
+   containing block for any position:fixed element inside it. */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 8, 8, 0.98);
+  backdrop-filter: blur(16px);
+  transform: translateY(-12px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), opacity 0.25s ease, visibility 0.3s;
+}
+
+body.nav-open .mobile-menu {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-menu-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.mobile-menu-links a {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #d4d4d4;
+  transition: color 0.2s;
+}
+
+.mobile-menu-links a:hover,
+.mobile-menu-links a:focus-visible {
+  color: #eab308;
+}
+
+@media (min-width: 769px) {
+  .mobile-menu { display: none; }
 }
 
 /* ── Hero ── */
@@ -375,7 +474,7 @@ hr.section-divider {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  color: #555555;
+  color: #8a8a8a;
   font-size: 0.95rem;
   font-weight: 500;
 }
@@ -442,13 +541,13 @@ hr.section-divider {
   font-size: 0.7rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #555555;
+  color: #8a8a8a;
 }
 
 .scroll-line {
   width: 3rem;
   height: 1px;
-  background: #555555;
+  background: #8a8a8a;
   animation: scrollPulse 2s ease-in-out infinite;
 }
 
@@ -564,7 +663,7 @@ hr.section-divider {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #555555;
+  color: #8a8a8a;
 }
 
 @media (max-width: 768px) {
@@ -662,7 +761,7 @@ hr.section-divider {
 
 .stack-role {
   font-size: 0.72rem;
-  color: #555555;
+  color: #8a8a8a;
   letter-spacing: 0.05em;
 }
 
@@ -780,7 +879,7 @@ hr.section-divider {
 
 .project-desc {
   font-size: 0.9rem;
-  color: #555555;
+  color: #8a8a8a;
   line-height: 1.7;
   position: relative;
 }
@@ -799,7 +898,7 @@ hr.section-divider {
   text-transform: uppercase;
   padding: 0.3rem 0.7rem;
   border: 1px solid #1e1e1e;
-  color: #555555;
+  color: #8a8a8a;
   background: #161616;
 }
 
@@ -891,7 +990,7 @@ hr.section-divider {
 
 .terminal-title {
   font-size: 0.7rem;
-  color: #555555;
+  color: #8a8a8a;
   margin-left: 0.5rem;
 }
 
@@ -905,7 +1004,7 @@ hr.section-divider {
 .terminal-line {
   font-size: 0.82rem;
   line-height: 2;
-  color: #555555;
+  color: #8a8a8a;
 }
 
 .terminal-line .key  { color: #eab308; }
@@ -950,7 +1049,7 @@ hr.section-divider {
   font-size: 0.75rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #555555;
+  color: #8a8a8a;
 }
 
 .footer-heading {
@@ -968,7 +1067,7 @@ hr.section-divider {
 
 .footer-email {
   font-size: 1rem;
-  color: #555555;
+  color: #8a8a8a;
   letter-spacing: 0.05em;
   transition: color 0.2s;
 }
@@ -987,7 +1086,7 @@ hr.section-divider {
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #555555;
+  color: #8a8a8a;
   transition: color 0.2s;
 }
 

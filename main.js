@@ -4,6 +4,16 @@ function esc(str) {
   return div.innerHTML;
 }
 
+function navLinksMarkup() {
+  return NAV.links.map(l => `
+    <li>
+      <a href="${l.href}">
+        ${l.label}
+      </a>
+    </li>`
+  ).join('');
+}
+
 function createNavbar() {
   const nav = document.createElement('nav');
   nav.className = 'navbar';
@@ -15,16 +25,58 @@ function createNavbar() {
         </span>
     </div>
     <ul class="nav-links">
-      ${NAV.links.map(l => `
-        <li>
-          <a href="${l.href}">
-            ${l.label}
-          </a>
-        </li>`
-  ).join('')}
+      ${navLinksMarkup()}
     </ul>
+    <button
+      class="nav-toggle"
+      type="button"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+        <line class="bar bar-1" x1="2" y1="5" x2="20" y2="5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        <line class="bar bar-2" x1="2" y1="11" x2="20" y2="11" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        <line class="bar bar-3" x1="2" y1="17" x2="20" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      </svg>
+    </button>
   `;
   return nav;
+}
+
+function createMobileMenu() {
+  const menu = document.createElement('div');
+  menu.className = 'mobile-menu';
+  menu.id = 'mobile-menu';
+  menu.innerHTML = `
+    <ul class="mobile-menu-links">
+      ${navLinksMarkup()}
+    </ul>
+  `;
+  return menu;
+}
+
+function wireMobileNav(nav, menu) {
+  const toggle = nav.querySelector('.nav-toggle');
+
+  function setOpen(open) {
+    document.body.classList.toggle('nav-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+
+  toggle.addEventListener('click', () => {
+    setOpen(!document.body.classList.contains('nav-open'));
+  });
+
+  menu.addEventListener('click', (e) => {
+    if (e.target.closest('a')) setOpen(false);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('nav-open')) setOpen(false);
+  });
 }
 
 function createHero() {
@@ -187,18 +239,18 @@ function createWorks() {
             ${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}
           </div>
           ${p.link
-      ? `<a href="${p.link}" class="project-link" target="_blank" rel="noreferrer">
+      ? `<a href="${p.link}" class="project-link" target="_blank" rel="noopener noreferrer">
             View Project ▶
           </a>`
       : ''}
           ${p.liveLink
-      ? `<a 
-          href="${p.liveLink}" 
-          class="project-link" 
-          target="_blank" 
-          rel="noreferrer">
+      ? `<a
+          href="${p.liveLink}"
+          class="project-link"
+          target="_blank"
+          rel="noopener noreferrer">
               Live Demo ▶
-         </a>` 
+         </a>`
       : ''}
         </div>
       `).join('')}
@@ -280,7 +332,7 @@ function createFooter() {
       </a>
       <div class="social-links">
         ${FOOTER.social.map(s => `
-          <a href="${s.href}" target="_blank" rel="noreferrer" class="social-link">
+          <a href="${s.href}" target="_blank" rel="noopener noreferrer" class="social-link">
             ${s.label} ↗
           </a>
         `).join('')}
@@ -307,10 +359,15 @@ function init() {
   const glow2 = document.createElement('div');
   glow2.className = 'glow-2';
 
+  const navbar = createNavbar();
+  const mobileMenu = createMobileMenu();
+  wireMobileNav(navbar, mobileMenu);
+
   root.append(
     glow1,
     glow2,
-    createNavbar(),
+    navbar,
+    mobileMenu,
     createHero(),
     divider(),
     createAbout(),
