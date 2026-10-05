@@ -48,5 +48,13 @@ const PROJECTS = {
       link: 'https://github.com/Neri-Lenchner/chat-project',
       featured: false,
     },
+    {
+      num: '06',
+      title: 'MicroWorld',
+      desc: 'A microservices marketplace built to make the architecture itself visible: eight independently deployable services (Auth, Catalog, Order, Watchlist, Payment, Notification, Analytics, Gateway), each owning its own MySQL database, coordinated through a RabbitMQ-driven saga for the full buy → reserve → pay → confirm flow, including the decline/rollback path. A live Socket.IO feed broadcasts order events to every connected browser. Fully Dockerized with a GitHub Actions CI pipeline running integration tests, including a race-condition test asserting only one buyer can ever win a simultaneous purchase.',
+      tags: ['React', 'TypeScript', 'Node.js', 'Express', 'MySQL', 'RabbitMQ', 'Socket.IO', 'Docker', 'JWT'],
+      link: 'https://github.com/Neri-Lenchner/micro-world-project',
+      featured: false,
+    },
   ],
 };
