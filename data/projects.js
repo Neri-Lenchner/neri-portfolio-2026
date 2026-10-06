@@ -56,5 +56,13 @@ const PROJECTS = {
       link: 'https://github.com/Neri-Lenchner/micro-world-project',
       featured: false,
     },
+    {
+      num: '07',
+      title: 'Boidem',
+      desc: 'A live, in-production used-clothing exchange app built for a kibbutz community, with real families using it to log donated items. Family accounts share a single passwordless account number instead of individual logins, while admins get full reporting, CSV/JSON backups, and a registration-approval queue gating every new signup. Hardened with Firebase App Check and tightly scoped Firestore security rules protecting per-family data isolation.',
+      tags: ['React', 'TypeScript', 'Firebase', 'Firestore', 'Redux Toolkit'],
+      liveLink: 'https://boidem.vercel.app',
+      featured: false,
+    },
   ],
 };
