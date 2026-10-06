@@ -249,7 +249,7 @@ function createWorks() {
           class="project-link"
           target="_blank"
           rel="noopener noreferrer">
-              Live Demo ▶
+              ${p.liveLinkLabel || 'Live Demo'} ▶
          </a>`
       : ''}
         </div>
